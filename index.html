@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Método Sin Perseguir — Protocolo del Silencio Magnético</title>
+  <meta name="description" content="El sistema de 21 días que invierte la dinámica emocional — para que él vuelva por decisión propia, sin que tú tengas que perseguir, rogar ni enviar un solo mensaje más.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    .ico { display:inline-block; width:1em; height:1em; vertical-align:middle; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+  </style>
+
+  <style>
+    /* ─── Reset ─── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #000;
+      color: #fff;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── Variables ─── */
+    :root {
+      --red: #ef233c;
+      --red-glow: rgba(239,35,60,0.35);
+      --white-10: rgba(255,255,255,0.1);
+      --white-06: rgba(255,255,255,0.06);
+      --white-04: rgba(255,255,255,0.04);
+      --zinc: #a1a1aa;
+      --max: 1024px;
+    }
+
+    /* ─── Scroll Progress ─── */
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: var(--red);
+      box-shadow: 0 0 12px var(--red-glow);
+      z-index: 999;
+      transition: width 0.1s linear;
+    }
+
+    /* ─── Ambient Background ─── */
+    .ambient {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .ambient::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(239,35,60,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .ambient::after {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(239,35,60,0.06) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    /* ─── Navbar ─── */
+    header {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 50;
+      padding: 20px 16px 0;
+    }
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--white-10);
+      border-radius: 9999px;
+      padding: 12px 24px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.6);
+    }
+    /* No desktop, nav-top-row é invisível — logo e CTA ficam como filhos diretos */
+    .nav-top-row {
+      display: contents;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+    }
+    .logo-diamond {
+      width: 20px;
+      height: 20px;
+      background: var(--red);
+      border-radius: 4px;
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--zinc);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 9999px;
+      background: var(--white-06);
+      border: 1px solid var(--white-10);
+      padding: 9px 22px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: background 0.2s, border-color 0.2s;
+      gap: 8px;
+    }
+    .nav-cta:hover {
+      background: rgba(239,35,60,0.15);
+      border-color: rgba(239,35,60,0.4);
+    }
+    /* ─── MOBILE ─── */
+    @media (max-width: 680px) {
+      /* Navbar mobile: logo + CTA, links abaixo */
+      header { padding: 12px 12px 0; }
+      .nav-inner {
+        flex-direction: column;
+        gap: 10px;
+        border-radius: 18px;
+        padding: 12px 16px;
+      }
+      .nav-top-row {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .nav-links {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 0;
+        border-top: 1px solid var(--white-10);
+        padding-top: 10px;
+      }
+      .nav-links a {
+        flex: 1;
+        text-align: center;
+        font-size: 12px;
+        padding: 2px 0;
+      }
+      .nav-cta {
+        padding: 8px 14px;
+        font-size: 10px;
+      }
+
+      /* Hero mobile */
+      #hero { padding: 160px 20px 60px; }
+      .hero-badge { font-size: 11px; padding: 5px 12px; margin-bottom: 24px; }
+      .hero-h1 { font-size: clamp(32px, 9vw, 48px); margin-bottom: 20px; }
+      .hero-sub { font-size: 15px; margin-bottom: 32px; }
+      .cta-primary { padding: 15px 32px; font-size: 14px; width: 100%; justify-content: center; }
+      .payment-badges { gap: 6px; }
+      .badge-pill { font-size: 10px; padding: 3px 9px; }
+
+      /* Sections mobile */
+      .section-inner { padding: 64px 20px; }
+      .section-h2 { font-size: clamp(24px, 7vw, 36px); }
+      .section-p { font-size: 15px; }
+
+      /* Problema grid */
+      .problems-grid { grid-template-columns: 1fr; gap: 12px; }
+      .change-line { font-size: 20px; }
+
+      /* Mecanismo */
+      #el-método .section-inner { grid-template-columns: 1fr; gap: 32px; }
+      .science-card { position: static; }
+
+      /* Etapas */
+      .etapas-grid { grid-template-columns: 1fr; gap: 16px; }
+
+      /* Beneficios */
+      #beneficios .section-inner { grid-template-columns: 1fr; gap: 40px; }
+      .ben-visual { padding: 28px 20px; }
+      .ben-stat-num { font-size: 40px; }
+
+      /* Precio */
+      .price-box { padding: 32px 20px; }
+      .price-big { font-size: 56px; }
+
+      /* Footer */
+      footer { padding: 36px 20px; }
+    }
+
+    /* ─── Hero ─── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 24px 80px;
+      z-index: 1;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      background: var(--white-04);
+      border: 1px solid var(--white-10);
+      backdrop-filter: blur(8px);
+      margin-bottom: 32px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--zinc);
+    }
+    .pulse-dot {
+      position: relative;
+      display: flex;
+      height: 8px;
+      width: 8px;
+    }
+    .pulse-dot::before {
+      content: '';
+      position: absolute;
+      display: inline-flex;
+      height: 100%;
+      width: 100%;
+      border-radius: 9999px;
+      background: #f87171;
+      opacity: 0.75;
+      animation: ping 1.4s cubic-bezier(0,0,0.2,1) infinite;
+    }
+    .pulse-dot::after {
+      content: '';
+      position: relative;
+      display: inline-flex;
+      border-radius: 9999px;
+      height: 8px;
+      width: 8px;
+      background: var(--red);
+    }
+    @keyframes ping {
+      75%, 100% { transform: scale(2); opacity: 0; }
+    }
+    .hero-h1 {
+      font-family: 'Manrope', sans-serif;
+      font-size: clamp(36px, 7vw, 76px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      margin-bottom: 28px;
+      text-wrap: balance;
+      max-width: 900px;
+    }
+    .hero-h1 .gradient {
+      display: block;
+      background: linear-gradient(to bottom, #fff, #fff, rgba(255,255,255,0.45));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-h1 .red { color: var(--red); -webkit-text-fill-color: var(--red); }
+    .hero-sub {
+      font-size: clamp(15px, 2vw, 18px);
+      line-height: 1.65;
+      color: var(--zinc);
+      max-width: 600px;
+      margin-bottom: 40px;
+    }
+    /* CTA Principal */
+    @keyframes border-glow {
+      0%, 100% { box-shadow: 0 0 0 2px var(--red), 0 0 20px var(--red-glow); }
+      50% { box-shadow: 0 0 0 2px #ff6b7a, 0 0 40px rgba(239,35,60,0.5); }
+    }
+    .cta-primary {
+      position: relative;
+      border-radius: 9999px;
+      padding: 17px 44px;
+      border: 2px solid var(--red);
+      background: rgba(239,35,60,0.08);
+      animation: border-glow 2.5s ease-in-out infinite;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Manrope', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+      text-decoration: none;
+      color: #fff;
+    }
+    .cta-primary:hover { transform: scale(1.03); background: rgba(239,35,60,0.18); }
+    .cta-arrow { }
+    .cta-text { }
+    .hero-meta {
+      margin-top: 20px;
+      font-size: 13px;
+      color: #52525b;
+    }
+    .payment-badges {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .badge-pill {
+      padding: 4px 12px;
+      border-radius: 9999px;
+      background: var(--white-04);
+      border: 1px solid var(--white-10);
+      font-size: 11px;
+      font-weight: 500;
+      color: #71717a;
+    }
+
+    /* ─── Sections common ─── */
+    section { position: relative; z-index: 1; }
+    .section-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 96px 24px;
+    }
+    .section-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--red);
+      margin-bottom: 16px;
+    }
+    .section-h2 {
+      font-family: 'Manrope', sans-serif;
+      font-size: clamp(28px, 4.5vw, 52px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .section-h2 .accent { color: var(--red); }
+    .section-h2 .dim { color: var(--zinc); }
+    .section-p {
+      font-size: 17px;
+      line-height: 1.7;
+      color: #a1a1aa;
+      max-width: 640px;
+    }
+
+    /* ─── Divider ─── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--white-10), transparent);
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    /* ─── Problema ─── */
+    #problema .section-inner {
+      text-align: center;
+    }
+    #problema .section-h2 { max-width: 700px; margin: 0 auto 48px; }
+    .problems-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    .problem-card {
+      background: var(--white-04);
+      border: 1px solid var(--white-10);
+      border-radius: 16px;
+      padding: 24px 20px;
+      text-align: left;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: border-color 0.2s;
+    }
+    .problem-card:hover { border-color: rgba(239,35,60,0.25); }
+    .problem-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(239,35,60,0.1);
+      border: 1px solid rgba(239,35,60,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--red);
+      font-size: 16px;
+    }
+    .problem-text {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #d4d4d8;
+    }
+    .change-line {
+      font-family: 'Manrope', sans-serif;
+      font-size: clamp(20px, 3vw, 30px);
+      font-weight: 700;
+      color: #fff;
+    }
+    .change-line .red { color: var(--red); }
+
+    /* ─── Mecanismo ─── */
+    #el-método .section-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    @media (max-width: 720px) {
+      #el-método .section-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+    .mec-text-col .section-p { margin-bottom: 20px; }
+    .quote-block {
+      background: var(--white-04);
+      border: 1px solid var(--white-10);
+      border-left: 3px solid var(--red);
+      border-radius: 0 12px 12px 0;
+      padding: 20px 24px;
+      margin-top: 32px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #d4d4d8;
+      font-style: italic;
+    }
+    .science-card {
+      background: var(--white-04);
+      border: 1px solid var(--white-10);
+      border-radius: 20px;
+      padding: 32px;
+      position: sticky;
+      top: 120px;
+    }
+    .science-card h3 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .science-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .science-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #a1a1aa;
+    }
+    .check-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      background: rgba(239,35,60,0.15);
+      border: 1px solid rgba(239,35,60,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--red);
+      font-size: 11px;
+      margin-top: 2px;
+    }
+
+    /* ─── Etapas ─── */
+    #las-etapas { background: var(--white-04); }
+    #las-etapas .section-inner { text-align: center; }
+    #las-etapas .section-h2 { max-width: 600px; margin: 0 auto 56px; }
+    .etapas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 720px) {
+      .etapas-grid { grid-template-columns: 1fr; }
+    }
+    .etapa-card {
+      background: rgba(0,0,0,0.5);
+      border: 1px solid var(--white-10);
+      border-radius: 20px;
+      padding: 32px 24px;
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .etapa-card:hover {
+      border-color: rgba(239,35,60,0.3);
+      transform: translateY(-4px);
+    }
+    .etapa-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--red), transparent);
+    }
+    .etapa-num {
+      font-family: 'Manrope', sans-serif;
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--red);
+      opacity: 0.25;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .etapa-card h3 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .etapa-days {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+    .etapa-card p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--zinc);
+    }
+
+    /* ─── Beneficios ─── */
+    #beneficios .section-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    @media (max-width: 720px) {
+      #beneficios .section-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+    .beneficios-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .beneficio-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .ben-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: rgba(239,35,60,0.1);
+      border: 1px solid rgba(239,35,60,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--red);
+      font-size: 18px;
+    }
+    .beneficio-item h4 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .beneficio-item p {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--zinc);
+    }
+    .ben-visual {
+      background: var(--white-04);
+      border: 1px solid var(--white-10);
+      border-radius: 24px;
+      padding: 40px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .ben-stat {
+      text-align: center;
+    }
+    .ben-stat-num {
+      font-family: 'Manrope', sans-serif;
+      font-size: 52px;
+      font-weight: 800;
+      color: var(--red);
+      line-height: 1;
+    }
+    .ben-stat-label {
+      font-size: 13px;
+      color: var(--zinc);
+      margin-top: 4px;
+    }
+    .ben-divider { height: 1px; background: var(--white-10); }
+
+    /* ─── Testimonios ─── */
+    #testimonios { overflow: hidden; }
+    #testimonios .section-inner { text-align: center; padding-bottom: 0; }
+    .carousel-track-wrap {
+      overflow: hidden;
+      margin-top: 48px;
+      padding-bottom: 96px;
+    }
+    .carousel-track {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+      will-change: transform;
+    }
+    .testi-card {
+      background: var(--white-04);
+      border: 1px solid var(--white-10);
+      border-radius: 20px;
+      padding: 28px 24px;
+      min-width: 320px;
+      max-width: 340px;
+      flex-shrink: 0;
+      text-align: left;
+      transition: border-color 0.2s;
+    }
+    .testi-card:hover { border-color: rgba(239,35,60,0.2); }
+    .stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+      color: #fbbf24;
+      font-size: 14px;
+    }
+    .testi-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #d4d4d8;
+      margin-bottom: 20px;
+    }
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .testi-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--white-10);
+      border: 1px solid var(--white-10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--red);
+    }
+    .testi-name {
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .testi-loc {
+      font-size: 11px;
+      color: var(--zinc);
+      margin-top: 1px;
+    }
+    /* Auto-scroll row 2 (reverse) */
+    .carousel-row2 .carousel-track {
+      animation: scroll-left 30s linear infinite;
+    }
+    .carousel-row1 .carousel-track {
+      animation: scroll-right 35s linear infinite;
+    }
+    @keyframes scroll-left {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @keyframes scroll-right {
+      from { transform: translateX(-50%); }
+      to   { transform: translateX(0); }
+    }
+    .carousel-track-wrap:hover .carousel-track {
+      animation-play-state: paused;
+    }
+
+    /* ─── Precio ─── */
+    #precio { background: var(--white-04); }
+    #precio .section-inner {
+      max-width: 560px;
+      text-align: center;
+    }
+    .price-box {
+      background: rgba(0,0,0,0.6);
+      border: 1px solid var(--white-10);
+      border-radius: 24px;
+      padding: 48px 36px;
+      margin-top: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .price-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--red), transparent);
+    }
+    .price-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      background: rgba(239,35,60,0.1);
+      border: 1px solid rgba(239,35,60,0.25);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 24px;
+    }
+    .price-big {
+      font-family: 'Manrope', sans-serif;
+      font-size: 72px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .price-currency {
+      font-size: 28px;
+      vertical-align: super;
+      margin-right: 2px;
+      color: var(--zinc);
+    }
+    .price-usd {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--zinc);
+      margin-top: 4px;
+      margin-bottom: 32px;
+    }
+    .price-includes {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+      text-align: left;
+    }
+    .price-include-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: #d4d4d8;
+    }
+    .price-include-item .check {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(239,35,60,0.15);
+      border: 1px solid rgba(239,35,60,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--red);
+      font-size: 10px;
+    }
+    .cta-buy {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 18px 24px;
+      background: var(--red);
+      color: #fff;
+      border-radius: 14px;
+      font-family: 'Manrope', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      transition: background 0.2s, transform 0.2s;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .cta-buy:hover {
+      background: #d81f34;
+      transform: translateY(-2px);
+    }
+    .price-meta {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #52525b;
+      line-height: 1.6;
+    }
+    .price-payments {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .guarantee {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: rgba(239,35,60,0.05);
+      border: 1px solid rgba(239,35,60,0.15);
+      border-radius: 14px;
+      padding: 20px;
+      margin-top: 32px;
+      text-align: left;
+    }
+    .guarantee-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(239,35,60,0.1);
+      border: 1px solid rgba(239,35,60,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--red);
+      font-size: 22px;
+    }
+    .guarantee h4 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .guarantee p {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--zinc);
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--white-10);
+      padding: 48px 24px;
+    }
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Manrope', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .footer-copy {
+      font-size: 13px;
+      color: #52525b;
+    }
+    .footer-link {
+      font-size: 13px;
+      color: var(--zinc);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .footer-link:hover { color: #fff; }
+
+    /* ─── Sticky Bottom Bar (mobile) ─── */
+    #sticky-bar {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 200;
+      transform: translateY(120%);
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+      padding: 12px 14px calc(12px + env(safe-area-inset-bottom));
+      background: rgba(8,8,8,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(239,35,60,0.4);
+      box-shadow: 0 -10px 40px -10px rgba(0,0,0,0.8);
+    }
+    #sticky-bar.visible { transform: translateY(0); }
+    .sticky-inner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .sticky-price {
+      font-family: 'Manrope', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .sticky-price span { font-size: 13px; font-weight: 400; color: var(--zinc); }
+    .sticky-cta {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px;
+      background: var(--red);
+      color: #fff;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .sticky-cta:hover { background: #d81f34; }
+  </style>
+</head>
+<body>
+
+  <!-- Progress Bar -->
+  <div id="progress-bar"></div>
+
+  <!-- Ambient Background -->
+  <div class="ambient"></div>
+
+  <!-- ─── NAVBAR ─── -->
+  <header>
+    <div class="nav-inner">
+      <div class="nav-top-row">
+        <a href="#" class="nav-logo">
+          <div class="logo-diamond"></div>
+          Sin Perseguir
+        </a>
+        <a href="#precio" class="nav-cta">
+          <span>Quiero el método</span>
+          <svg class="ico" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+      <nav class="nav-links">
+        <a href="#el-método">El método</a>
+        <a href="#las-etapas">Las etapas</a>
+        <a href="#precio">Precio</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ─── HERO ─── -->
+  <section id="hero">
+    <div class="hero-badge">
+      <div class="pulse-dot"></div>
+      Protocolo del Silencio Magnético
+    </div>
+
+    <h1 class="hero-h1">
+      <span class="gradient">Hay una razón por la que mientras más lo buscas,</span>
+      <span class="red">más se aleja.</span>
+    </h1>
+
+    <p class="hero-sub">
+      El Método Sin Perseguir es el sistema de 21 días que invierte esa dinámica — diseñado para que sea él quien dé el primer paso, sin que tengas que rogar ni enviar un solo mensaje más.
+    </p>
+
+    <a href="https://pay.hotmart.com/A106495275D" class="cta-primary">
+      <span class="cta-text">Quiero el método</span>
+      <svg class="ico cta-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+
+    <p class="hero-meta">$9 USD · Acceso inmediato · Garantía de 7 días</p>
+
+    <div class="payment-badges">
+      <span class="badge-pill">OXXO</span>
+      <span class="badge-pill">Tarjeta</span>
+      <span class="badge-pill">SPEI</span>
+      <span class="badge-pill">Mercado Pago</span>
+      <span class="badge-pill">PayPal</span>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── PROBLEMA ─── -->
+  <section id="problema">
+    <div class="section-inner">
+      <p class="section-label">El problema</p>
+      <h2 class="section-h2">¿Te suena familiar <span class="accent">alguna de estas situaciones?</span></h2>
+
+      <div class="problems-grid">
+        <div class="problem-card">
+          <div class="problem-icon">
+            <svg class="ico" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <p class="problem-text">Le mandas mensajes y no responde — o responde con monosílabos después de horas</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">
+            <svg class="ico" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          </div>
+          <p class="problem-text">Lo llamas "para hablar" y terminas en la misma conversación circular de siempre</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">
+            <svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <p class="problem-text">Revisas su última conexión constantemente — y no puedes dejar de hacerlo</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">
+            <svg class="ico" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <p class="problem-text">Publicas en redes esperando que él lo note, pero no da señales de vida</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">
+            <svg class="ico" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <p class="problem-text">Sientes que si dejas de buscarlo todo se acaba — y eso te tiene paralizada</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">
+            <svg class="ico" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <p class="problem-text">Ya lo intentaste todo y nada funciona — la situación lleva semanas o meses igual</p>
+        </div>
+      </div>
+
+      <p class="change-line">Y eso está a punto de cambiar. <span class="red">Para siempre.</span></p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── MECANISMO ─── -->
+  <section id="el-método">
+    <div class="section-inner">
+      <div class="mec-text-col">
+        <p class="section-label">El mecanismo</p>
+        <h2 class="section-h2">El problema no es que él no te quiera.<br>Es que le estás dando exactamente <span class="accent">lo que apaga el deseo.</span></h2>
+
+        <p class="section-p">La ciencia del comportamiento humano es clara: el deseo no se activa por lo que siempre está disponible. Se activa por lo que percibe como escaso, valioso e inalcanzable.</p>
+        <p class="section-p" style="margin-top:16px;">Cada mensaje que mandas sin respuesta no demuestra amor. Demuestra disponibilidad sin valor. Y en la mente masculina, lo que siempre está disponible deja de ser deseado.</p>
+        <p class="section-p" style="margin-top:16px;">El Protocolo del Silencio Magnético no es no contacto por dolor. Es un reposicionamiento estratégico de tu valor emocional — diseñado específicamente para invertir esa dinámica.</p>
+
+        <blockquote class="quote-block">
+          "Los hombres solo persiguen lo que sienten que pueden perder. El silencio no es ausencia — es la presencia más poderosa que puedes ofrecer."
+        </blockquote>
+      </div>
+
+      <div class="science-card">
+        <h3>¿Por qué funciona?</h3>
+        <ul class="science-list">
+          <li>
+            <div class="check-icon">✓</div>
+            <span>La <strong>escasez percibida</strong> activa el sistema de búsqueda en el cerebro masculino</span>
+          </li>
+          <li>
+            <div class="check-icon">✓</div>
+            <span>El <strong>silencio estratégico</strong> interrumpe el patrón de "la tengo segura"</span>
+          </li>
+          <li>
+            <div class="check-icon">✓</div>
+            <span>La <strong>presencia magnética</strong> reemplaza la persecución y genera atracción real</span>
+          </li>
+          <li>
+            <div class="check-icon">✓</div>
+            <span>El <strong>primer mensaje exacto</strong> reencuadra la dinámica — él siente que fue su idea</span>
+          </li>
+          <li>
+            <div class="check-icon">✓</div>
+            <span>Todo está ordenado en un plan diario de <strong>21 días</strong> con instrucciones claras</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── LAS ETAPAS ─── -->
+  <section id="las-etapas">
+    <div class="section-inner">
+      <p class="section-label">El protocolo</p>
+      <h2 class="section-h2">Silencio <span class="accent">Magnético</span></h2>
+
+      <div class="etapas-grid">
+        <div class="etapa-card">
+          <div class="etapa-num">01</div>
+          <h3>El Silencio</h3>
+          <p class="etapa-days">Días 1 al 7</p>
+          <p>Cortas el ciclo de persecución. Recuperas tu centro. Él empieza a registrar tu ausencia.</p>
+        </div>
+        <div class="etapa-card">
+          <div class="etapa-num">02</div>
+          <h3>El Imán</h3>
+          <p class="etapa-days">Días 8 al 14</p>
+          <p>Construyes presencia magnética desde adentro. Tu energía cambia. Él lo siente sin saber por qué.</p>
+        </div>
+        <div class="etapa-card">
+          <div class="etapa-num">03</div>
+          <h3>El Retorno</h3>
+          <p class="etapa-days">Días 15 al 21</p>
+          <p>Aprendes exactamente cómo responder cuando él aparezca — para que sienta que fue su idea buscarte.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── BENEFICIOS ─── -->
+  <section id="beneficios">
+    <div class="section-inner">
+      <div>
+        <p class="section-label">Lo que obtienes</p>
+        <h2 class="section-h2">Con El Método Sin Perseguir <span class="accent">vas a descubrir:</span></h2>
+
+        <div class="beneficios-list">
+          <div class="beneficio-item">
+            <div class="ben-icon">
+              <svg class="ico" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+            </div>
+            <div>
+              <h4>Cómo aplicar el silencio estratégico</h4>
+              <p>Sin que parezca indiferencia — la diferencia entre el silencio que atrae y el que solo duele.</p>
+            </div>
+          </div>
+          <div class="beneficio-item">
+            <div class="ben-icon">
+              <svg class="ico" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div>
+              <h4>La frase exacta para el primer mensaje</h4>
+              <p>Probada en cientos de casos — para que él responda de inmediato y sienta que fue su elección.</p>
+            </div>
+          </div>
+          <div class="beneficio-item">
+            <div class="ben-icon">
+              <svg class="ico" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            </div>
+            <div>
+              <h4>Qué publicar (y qué NUNCA publicar) en redes</h4>
+              <p>Cada post que subes es un mensaje para él. Aprende a usarlos a tu favor sin que lo note.</p>
+            </div>
+          </div>
+          <div class="beneficio-item">
+            <div class="ben-icon">
+              <svg class="ico" viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-1.14Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-1.14Z"/></svg>
+            </div>
+            <div>
+              <h4>La psicología detrás del deseo masculino</h4>
+              <p>Por qué la persecución lo aleja y qué activa exactamente el instinto de conquista en un hombre.</p>
+            </div>
+          </div>
+          <div class="beneficio-item">
+            <div class="ben-icon">
+              <svg class="ico" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div>
+              <h4>Cómo pasar de "modo dolor" a "modo magnético"</h4>
+              <p>El reencuadre mental que cambia tu energía en 72 horas — y él lo siente sin que digas una palabra.</p>
+            </div>
+          </div>
+          <div class="beneficio-item">
+            <div class="ben-icon">
+              <svg class="ico" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div>
+              <h4>Plan diario de 21 días con instrucciones exactas</h4>
+              <p>Nada de teoría vaga. Cada día sabes exactamente qué hacer y qué evitar para no caer.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ben-visual">
+        <div class="ben-stat">
+          <div class="ben-stat-num">21</div>
+          <div class="ben-stat-label">días de protocolo guiado</div>
+        </div>
+        <div class="ben-divider"></div>
+        <div class="ben-stat">
+          <div class="ben-stat-num">$9</div>
+          <div class="ben-stat-label">precio único · acceso inmediato</div>
+        </div>
+        <div class="ben-divider"></div>
+        <div class="ben-stat">
+          <div class="ben-stat-num">7</div>
+          <div class="ben-stat-label">días de garantía de devolución</div>
+        </div>
+        <div class="ben-divider"></div>
+        <a href="https://pay.hotmart.com/A106495275D" class="cta-buy">
+          Quiero acceso ahora
+          <svg class="ico" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── TESTIMONIOS ─── -->
+  <section id="testimonios">
+    <div class="section-inner">
+      <p class="section-label">Resultados reales</p>
+      <h2 class="section-h2">Lo que dicen quienes ya <span class="accent">aplicaron el protocolo</span></h2>
+    </div>
+
+    <!-- Row 1 -->
+    <div class="carousel-track-wrap carousel-row1">
+      <div class="carousel-track" id="row1">
+        <!-- cards duplicated for infinite scroll -->
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">"Lo más difícil fue la primera semana, no voy a mentir. Pero la guía diaria me decía exactamente qué hacer para no caer. Recuperé algo que ni sabía que había perdido: mi calma."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">S</div>
+            <div>
+              <div class="testi-name">Sofía R.</div>
+              <div class="testi-loc">Ciudad de México</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">"Yo era de las que mandaba 10 mensajes seguidos. Entender la psicología del por qué eso lo alejaba me cambió la cabeza. La frase del primer mensaje funcionó tal cual."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">V</div>
+            <div>
+              <div class="testi-name">Valentina M.</div>
+              <div class="testi-loc">Bogotá, Colombia</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">"Honestamente lo compré sin mucha fe, son $9. Pero es lo más claro que he leído. No te promete magia, te da un plan. Volvimos y ahora la dinámica es totalmente distinta."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">A</div>
+            <div>
+              <div class="testi-name">Andrea L.</div>
+              <div class="testi-loc">Buenos Aires</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">"Llevábamos dos meses sin hablar y yo seguía revisando su última conexión cada noche. El método me dio una estructura para soltar eso. Al día 19 me marcó por teléfono."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">C</div>
+            <div>
+              <div class="testi-name">Camila F.</div>
+              <div class="testi-loc">Monterrey, México</div>
+            </div>
+          </div>
+        </div>
+        <!-- Duplicate for seamless scroll -->
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">"Lo más difícil fue la primera semana, no voy a mentir. Pero la guía diaria me decía exactamente qué hacer para no caer. Recuperé algo que ni sabía que había perdido: mi calma."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">S</div>
+            <div>
+              <div class="testi-name">Sofía R.</div>
+              <div class="testi-loc">Ciudad de México</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">"Yo era de las que mandaba 10 mensajes seguidos. Entender la psicología del por qué eso lo alejaba me cambió la cabeza. La frase del primer mensaje funcionó tal cual."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">V</div>
+            <div>
+              <div class="testi-name">Valentina M.</div>
+              <div class="testi-loc">Bogotá, Colombia</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">"Honestamente lo compré sin mucha fe, son $9. Pero es lo más claro que he leído. No te promete magia, te da un plan. Volvimos y ahora la dinámica es totalmente distinta."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">A</div>
+            <div>
+              <div class="testi-name">Andrea L.</div>
+              <div class="testi-loc">Buenos Aires</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">"Llevábamos dos meses sin hablar y yo seguía revisando su última conexión cada noche. El método me dio una estructura para soltar eso. Al día 19 me marcó por teléfono."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">C</div>
+            <div>
+              <div class="testi-name">Camila F.</div>
+              <div class="testi-loc">Monterrey, México</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2 removida -->
+    <div class="carousel-track-wrap carousel-row2" style="display:none;">
+      <div class="carousel-track" id="row2">
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">"Lo que más me sirvió fue la parte de qué publicar y qué no en redes. Dejé de actuar y empecé a vivir mi vida de verdad. La diferencia se notó en menos de dos semanas."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">L</div>
+            <div>
+              <div class="testi-name">Luciana P.</div>
+              <div class="testi-loc">Lima, Perú</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">"No volví con él, y aun así le doy 5 estrellas. Entendí que estaba persiguiendo a alguien que no me valoraba. El método me devolvió a mí. Eso valió cada peso."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">M</div>
+            <div>
+              <div class="testi-name">Mariana G.</div>
+              <div class="testi-loc">Guadalajara, México</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">"Soy escéptica con este tipo de cosas, pero el enfoque es psicológico, no de hechizos. Lo leí en una tarde y empecé esa misma noche. A las 3 semanas estábamos cenando juntos."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">I</div>
+            <div>
+              <div class="testi-name">Isabella T.</div>
+              <div class="testi-loc">Santiago, Chile</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">"La etapa del 'reencuadre' fue clave para mí. Dejé de mendigar atención y empecé a construir la mía. Cuando reaparecí, él notó el cambio de inmediato. Funcionó."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">D</div>
+            <div>
+              <div class="testi-name">Daniela R.</div>
+              <div class="testi-loc">Medellín, Colombia</div>
+            </div>
+          </div>
+        </div>
+        <!-- Duplicate -->
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">"Lo que más me sirvió fue la parte de qué publicar y qué no en redes. Dejé de actuar y empecé a vivir mi vida de verdad. La diferencia se notó en menos de dos semanas."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">L</div>
+            <div>
+              <div class="testi-name">Luciana P.</div>
+              <div class="testi-loc">Lima, Perú</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">"No volví con él, y aun así le doy 5 estrellas. Entendí que estaba persiguiendo a alguien que no me valoraba. El método me devolvió a mí. Eso valió cada peso."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">M</div>
+            <div>
+              <div class="testi-name">Mariana G.</div>
+              <div class="testi-loc">Guadalajara, México</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">"Soy escéptica con este tipo de cosas, pero el enfoque es psicológico, no de hechizos. Lo leí en una tarde y empecé esa misma noche. A las 3 semanas estábamos cenando juntos."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">I</div>
+            <div>
+              <div class="testi-name">Isabella T.</div>
+              <div class="testi-loc">Santiago, Chile</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">"La etapa del 'reencuadre' fue clave para mí. Dejé de mendigar atención y empecé a construir la mía. Cuando reaparecí, él notó el cambio de inmediato. Funcionó."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">D</div>
+            <div>
+              <div class="testi-name">Daniela R.</div>
+              <div class="testi-loc">Medellín, Colombia</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── PRECIO ─── -->
+  <section id="precio">
+    <div class="section-inner">
+      <p class="section-label">El precio</p>
+      <h2 class="section-h2">Un solo pago. <span class="accent">Acceso inmediato.</span></h2>
+      <p class="section-p">Sin suscripciones. Sin espera. Todo lo que necesitas para invertir la dinámica — disponible en segundos.</p>
+
+      <div class="price-box">
+        <div class="price-badge">Oferta única</div>
+        <div class="price-big">
+          <span class="price-currency">$</span>9
+        </div>
+        <div class="price-usd">USD · Pago único</div>
+
+        <div class="price-includes">
+          <div class="price-include-item">
+            <div class="check">✓</div>
+            El Método Sin Perseguir — Guía completa de 21 días
+          </div>
+          <div class="price-include-item">
+            <div class="check">✓</div>
+            Protocolo del Silencio Magnético paso a paso
+          </div>
+          <div class="price-include-item">
+            <div class="check">✓</div>
+            La frase exacta para el primer mensaje de recontacto
+          </div>
+          <div class="price-include-item">
+            <div class="check">✓</div>
+            Guía de redes sociales durante el protocolo
+          </div>
+          <div class="price-include-item">
+            <div class="check">✓</div>
+            Acceso inmediato y de por vida
+          </div>
+        </div>
+
+        <a href="https://pay.hotmart.com/A106495275D" class="cta-buy">
+          Quiero el método por $9 USD
+          <svg class="ico" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+
+        <div class="price-meta">
+          Procesado con seguridad por Hotmart · Acceso inmediato tras el pago
+        </div>
+
+        <div class="price-payments">
+          <span class="badge-pill">OXXO</span>
+          <span class="badge-pill">Tarjeta</span>
+          <span class="badge-pill">SPEI</span>
+          <span class="badge-pill">Mercado Pago</span>
+          <span class="badge-pill">PayPal</span>
+          <span class="badge-pill">Hotmart</span>
+        </div>
+
+        <div class="guarantee">
+          <div class="guarantee-icon">
+            <svg class="ico" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <div>
+            <h4>Garantía de 7 días</h4>
+            <p>Si en 7 días sientes que no fue para ti, te devolvemos cada centavo. Sin preguntas, sin drama.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">SIN PERSEGUIR</div>
+      <p class="footer-copy">© 2025 El Método Sin Perseguir · Protocolo del Silencio Magnético</p>
+      <a href="#" class="footer-link">Aviso legal</a>
+    </div>
+  </footer>
+
+  <!-- ─── STICKY BOTTOM BAR (mobile) ─── -->
+  <div id="sticky-bar">
+    <div class="sticky-inner">
+      <div class="sticky-price">$9 <span>USD</span></div>
+      <a href="https://pay.hotmart.com/A106495275D" class="sticky-cta">
+        Quiero el método ahora
+        <svg class="ico" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Scroll progress bar
+    const progressBar = document.getElementById('progress-bar');
+    const stickyBar = document.getElementById('sticky-bar');
+    let heroBottom = 0;
+
+    function onScroll() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = pct + '%';
+
+      // Show sticky bar after hero
+      if (!heroBottom) {
+        const hero = document.getElementById('hero');
+        if (hero) heroBottom = hero.offsetTop + hero.offsetHeight - 100;
+      }
+      if (scrollTop > heroBottom) {
+        stickyBar.classList.add('visible');
+      } else {
+        stickyBar.classList.remove('visible');
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Smooth anchor scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Pause carousels on hover (handled by CSS) — add touch support
+    document.querySelectorAll('.carousel-track-wrap').forEach(wrap => {
+      wrap.addEventListener('touchstart', () => {
+        wrap.querySelectorAll('.carousel-track').forEach(t => t.style.animationPlayState = 'paused');
+      }, { passive: true });
+      wrap.addEventListener('touchend', () => {
+        wrap.querySelectorAll('.carousel-track').forEach(t => t.style.animationPlayState = 'running');
+      }, { passive: true });
+    });
+  </script>
+</body>
+</html>
