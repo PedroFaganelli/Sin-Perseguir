@@ -156,6 +156,21 @@
       background: rgba(239,35,60,0.15);
       border-color: rgba(239,35,60,0.4);
     }
+    /* ─── FAQ ─── */
+    .faq-list { display: flex; flex-direction: column; gap: 12px; margin-top: 40px; }
+    .faq-item { background: var(--white-04); border: 1px solid var(--white-10); border-radius: 14px; overflow: hidden; transition: border-color 0.2s; }
+    .faq-item:hover { border-color: rgba(239,35,60,0.25); }
+    .faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; background: none; border: none; color: #fff; font-family: 'Manrope', sans-serif; font-size: 16px; font-weight: 600; text-align: left; cursor: pointer; }
+    .faq-arrow { transition: transform 0.3s; flex-shrink: 0; color: var(--red); }
+    .faq-q.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a { display: none; padding: 0 24px 20px; font-size: 15px; line-height: 1.7; color: var(--zinc); }
+    .faq-a.open { display: block; }
+
+    /* ─── Footer extras ─── */
+    .footer-disclaimer { font-size: 11px; color: #3f3f46; line-height: 1.6; max-width: 560px; text-align: center; margin-bottom: 4px; }
+    .footer-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; }
+    .footer-sep { color: #3f3f46; }
+
     /* ─── MOBILE ─── */
     @media (max-width: 680px) {
       /* Navbar mobile: logo + CTA, links abaixo */
@@ -1228,32 +1243,30 @@
 
       <div class="ben-visual">
         <div class="ben-stat">
-          <div class="ben-stat-num">21</div>
-          <div class="ben-stat-label">días de protocolo guiado</div>
+          <div class="ben-stat-num" style="font-size:36px;">21</div>
+          <div class="ben-stat-label">días de protocolo guiado, paso a paso</div>
         </div>
         <div class="ben-divider"></div>
         <div class="ben-stat">
-          <div class="ben-stat-num">$9</div>
-          <div class="ben-stat-label">precio único · acceso inmediato</div>
+          <div class="ben-stat-num" style="font-size:64px;color:#ef233c;text-shadow:0 0 30px rgba(239,35,60,0.5);">$9</div>
+          <div class="ben-stat-label">pago único · acceso inmediato de por vida</div>
         </div>
         <div class="ben-divider"></div>
         <div class="ben-stat">
-          <div class="ben-stat-num">7</div>
-          <div class="ben-stat-label">días de garantía de devolución</div>
+          <div class="ben-stat-num" style="font-size:36px;">7</div>
+          <div class="ben-stat-label">días de garantía · si no es para ti, te devolvemos todo</div>
         </div>
         <div class="ben-divider"></div>
         <a href="https://pay.hotmart.com/A106495275D" class="cta-buy">
-          Quiero acceso ahora
+          Quiero el método
           <svg class="ico" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
       </div>
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <!-- ─── TESTIMONIOS ─── -->
-  <section id="testimonios">
+  <!-- ─── TESTIMONIOS REMOVIDA ─── -->
+  <section id="testimonios" style="display:none">
     <div class="section-inner">
       <p class="section-label">Resultados reales</p>
       <h2 class="section-h2">Lo que dicen quienes ya <span class="accent">aplicaron el protocolo</span></h2>
@@ -1462,6 +1475,10 @@
 
       <div class="price-box">
         <div class="price-badge">Oferta única</div>
+        <div style="margin-bottom:8px;">
+          <span style="font-size:15px;color:#52525b;text-decoration:line-through;">Valor real del método: $47</span>
+        </div>
+        <div style="font-size:13px;font-weight:600;color:#a1a1aa;margin-bottom:4px;">Hoy, solo</div>
         <div class="price-big">
           <span class="price-currency">$</span>9
         </div>
@@ -1488,6 +1505,10 @@
             <div class="check">✓</div>
             Acceso inmediato y de por vida
           </div>
+          <div class="price-include-item">
+            <div class="check">✓</div>
+            Formato: guía digital en PDF — acceso inmediato en tu celular, sin esperas.
+          </div>
         </div>
 
         <a href="https://pay.hotmart.com/A106495275D" class="cta-buy">
@@ -1497,6 +1518,9 @@
 
         <div class="price-meta">
           Procesado con seguridad por Hotmart · Acceso inmediato tras el pago
+        </div>
+        <div class="price-meta" style="margin-top:8px;">
+          El pago se procesa en tu moneda local de forma segura vía Hotmart.
         </div>
 
         <div class="price-payments">
@@ -1521,21 +1545,69 @@
     </div>
   </section>
 
+  <div class="divider"></div>
+
+  <!-- ─── FAQ ─── -->
+  <section id="faq">
+    <div class="section-inner" style="max-width:700px;">
+      <p class="section-label">Dudas frecuentes</p>
+      <h2 class="section-h2">Preguntas <span class="accent">frecuentes</span></h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            ¿Funciona si llevamos meses sin hablar?
+            <svg class="ico faq-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">El protocolo está diseñado para situaciones frías, incluso después de semanas o meses de silencio. Cada etapa se adapta a tu punto de partida.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            ¿Cómo recibo el método?
+            <svg class="ico faq-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">Inmediatamente después del pago recibes acceso a la guía digital en tu correo y en tu celular. Sin esperas, sin envíos físicos.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            ¿Y si no funciona para mí?
+            <svg class="ico faq-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">Tienes 7 días de garantía. Si sientes que no es para ti, escribes a soporte y te devolvemos el 100%, sin preguntas.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ─── FOOTER ─── -->
   <footer>
     <div class="footer-inner">
       <div class="footer-logo">SIN PERSEGUIR</div>
       <p class="footer-copy">© 2025 El Método Sin Perseguir · Protocolo del Silencio Magnético</p>
-      <a href="#" class="footer-link">Aviso legal</a>
+      <p class="footer-disclaimer">Los resultados varían de persona a persona. El Método Sin Perseguir es una guía educativa y no garantiza la reconciliación ni ningún resultado específico. Al comprar, aceptas nuestros términos y política de privacidad.</p>
+      <div class="footer-links">
+        <a href="#aviso-legal" class="footer-link" onclick="openModal('aviso-legal')">Aviso legal</a>
+        <span class="footer-sep">·</span>
+        <a href="#privacidad" class="footer-link" onclick="openModal('privacidad')">Política de privacidad</a>
+        <span class="footer-sep">·</span>
+        <a href="#terminos" class="footer-link" onclick="openModal('terminos')">Términos y condiciones</a>
+      </div>
     </div>
   </footer>
+
+  <!-- ─── MODALES LEGALES ─── -->
+  <div id="modal-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:500;backdrop-filter:blur(6px);overflow-y:auto;padding:40px 16px;" onclick="if(event.target===this)closeModal()">
+    <div style="max-width:640px;margin:0 auto;background:#111;border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:40px 32px;position:relative;">
+      <button onclick="closeModal()" style="position:absolute;top:16px;right:20px;background:none;border:none;color:#71717a;font-size:22px;cursor:pointer;">✕</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
 
   <!-- ─── STICKY BOTTOM BAR (mobile) ─── -->
   <div id="sticky-bar">
     <div class="sticky-inner">
       <div class="sticky-price">$9 <span>USD</span></div>
       <a href="https://pay.hotmart.com/A106495275D" class="sticky-cta">
-        Quiero el método ahora
+        Quiero el método
         <svg class="ico" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
     </div>
@@ -1567,6 +1639,30 @@
 
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
+
+    // FAQ accordion
+    function toggleFaq(btn) {
+      const answer = btn.nextElementSibling;
+      const isOpen = btn.classList.contains('open');
+      document.querySelectorAll('.faq-q.open').forEach(b => { b.classList.remove('open'); b.nextElementSibling.classList.remove('open'); });
+      if (!isOpen) { btn.classList.add('open'); answer.classList.add('open'); }
+    }
+
+    // Modais legais
+    const legalContent = {
+      'aviso-legal': `<h2 style="font-family:'Manrope',sans-serif;font-size:22px;font-weight:700;margin-bottom:16px;">Aviso Legal</h2><p style="font-size:14px;line-height:1.8;color:#a1a1aa;">El Método Sin Perseguir es un producto digital de carácter educativo. El contenido de esta guía tiene como único propósito proporcionar información general sobre dinámicas emocionales y relacionales. No constituye asesoramiento psicológico, terapéutico ni de ningún otro tipo profesional. Los resultados varían de persona a persona y no están garantizados. Al adquirir este producto, el usuario acepta utilizarlo bajo su propia responsabilidad.</p>`,
+      'privacidad': `<h2 style="font-family:'Manrope',sans-serif;font-size:22px;font-weight:700;margin-bottom:16px;">Política de Privacidad</h2><p style="font-size:14px;line-height:1.8;color:#a1a1aa;">Los datos personales proporcionados durante el proceso de compra (nombre, correo electrónico) son tratados exclusivamente para el envío del producto adquirido y comunicaciones relacionadas con el mismo. No compartimos, vendemos ni cedemos tus datos a terceros. El procesamiento del pago es gestionado de forma segura por Hotmart, quien aplica sus propias políticas de privacidad. Puedes solicitar la eliminación de tus datos en cualquier momento escribiéndonos por correo.</p>`,
+      'terminos': `<h2 style="font-family:'Manrope',sans-serif;font-size:22px;font-weight:700;margin-bottom:16px;">Términos y Condiciones</h2><p style="font-size:14px;line-height:1.8;color:#a1a1aa;">Al realizar la compra de El Método Sin Perseguir, el usuario acepta los siguientes términos: (1) El producto es de uso personal y no puede ser reproducido, distribuido ni revendido. (2) La garantía de devolución es válida por 7 días naturales desde la fecha de compra. (3) El acceso al producto es inmediato tras la confirmación del pago. (4) El precio puede cambiar en cualquier momento sin previo aviso. (5) El uso del método es responsabilidad exclusiva del usuario.</p>`
+    };
+    function openModal(id) {
+      document.getElementById('modal-content').innerHTML = legalContent[id] || '';
+      document.getElementById('modal-overlay').style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      document.getElementById('modal-overlay').style.display = 'none';
+      document.body.style.overflow = '';
+    }
 
     // Smooth anchor scroll
     document.querySelectorAll('a[href^="#"]').forEach(a => {
