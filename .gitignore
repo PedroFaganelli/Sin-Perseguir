@@ -1,3 +1,8 @@
 desktop.ini
 .DS_Store
 Thumbs.db
+
+# Arquivos pessoais / não relacionados ao site
+CV/
+Pixel.txt
+*.png
