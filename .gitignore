@@ -6,3 +6,5 @@ Thumbs.db
 CV/
 Pixel.txt
 *.png
+# exceção: o logo do site DEVE subir
+!logo.png
