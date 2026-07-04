@@ -32,6 +32,23 @@
     document.head.appendChild(a);
   </script>
 
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '3117190392003784');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=3117190392003784&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel -->
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1467,6 +1484,34 @@
 
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
+
+    // Meta Pixel — eventos de funil
+    // ViewContent: dispara cuando el usuario llega a la sección de precio (interés real)
+    (function () {
+      if (typeof fbq !== 'function') return;
+      const precio = document.getElementById('precio');
+      if (!precio || !('IntersectionObserver' in window)) return;
+      let fired = false;
+      const obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting && !fired) {
+            fired = true;
+            fbq('track', 'ViewContent', { content_name: 'El Método Sin Perseguir', value: 9, currency: 'USD' });
+            obs.disconnect();
+          }
+        });
+      }, { threshold: 0.4 });
+      obs.observe(precio);
+    })();
+
+    // InitiateCheckout: dispara al hacer clic en cualquier botón hacia Hotmart
+    document.querySelectorAll('a[href*="pay.hotmart.com"]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (typeof fbq === 'function') {
+          fbq('track', 'InitiateCheckout', { content_name: 'El Método Sin Perseguir', value: 9, currency: 'USD' });
+        }
+      });
+    });
 
     // FAQ accordion
     function toggleFaq(btn) {
