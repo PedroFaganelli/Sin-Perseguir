@@ -207,6 +207,11 @@
     .faq-a { display: none; padding: 0 24px 20px; font-size: 15px; line-height: 1.7; color: var(--zinc); }
     .faq-a.open { display: block; }
 
+    /* ─── Split (imagen + texto) ─── */
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .split-img { width: 100%; height: auto; border-radius: 20px; display: block; box-shadow: 0 25px 60px -15px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.06); }
+    @media (max-width: 720px) { .split { grid-template-columns: 1fr; gap: 28px; } }
+
     /* ─── Footer extras ─── */
     .footer-disclaimer { font-size: 11px; color: #3f3f46; line-height: 1.6; max-width: 560px; text-align: center; margin-bottom: 4px; }
     .footer-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; }
@@ -1105,15 +1110,20 @@
 
   <!-- ─── ORIGEN / AUTORIDAD ─── -->
   <section id="origen">
-    <div class="section-inner" style="max-width:760px;text-align:center;">
-      <p class="section-label">El origen</p>
-      <h2 class="section-h2">Nadie te enseñó esto.<br>Y por eso <span class="accent">duele tanto.</span></h2>
-      <p class="section-p" style="margin:0 auto 18px;">Hiciste todo lo que se supone que hay que hacer. Hablar claro. Demostrar cuánto te importa. Estar ahí. Insistir. Y cuanto más lo intentas, más lejos parece estar él. No estás exagerando — y no es falta de amor de tu parte.</p>
-      <p class="section-p" style="margin:0 auto 18px;">El Método Sin Perseguir nació de ver ese mismo patrón repetirse una y otra vez: no es que él dejó de querer. Es que la persecución apaga justamente aquello que enciende el interés. La ciencia del comportamiento lo explica desde hace décadas — pero nadie lo había convertido en un plan que puedas seguir, día por día.</p>
-      <p class="section-p" style="margin:0 auto;">Por eso esto no son frases mágicas ni juegos. Es un protocolo de 21 días, en tres etapas, que empieza por lo más importante: <strong style="color:#fff;">tú</strong>. Primero recuperas tu centro. Lo demás — su atención, su interés, su regreso — llega como consecuencia, no como punto de partida.</p>
-      <blockquote class="quote-block" style="text-align:left;margin:32px auto 0;max-width:560px;">
-        "No necesitas fingir ni jugar con nadie. Solo dejar de perseguir y volver a ocupar tu lugar."
-      </blockquote>
+    <div class="section-inner">
+      <div class="split">
+        <img src="dor.png" alt="Mujer sola de noche mirando su teléfono" class="split-img">
+        <div>
+          <p class="section-label">El origen</p>
+          <h2 class="section-h2">Nadie te enseñó esto.<br>Y por eso <span class="accent">duele tanto.</span></h2>
+          <p class="section-p" style="margin-bottom:18px;">Hiciste todo lo que se supone que hay que hacer. Hablar claro. Demostrar cuánto te importa. Estar ahí. Insistir. Y cuanto más lo intentas, más lejos parece estar él. No estás exagerando — y no es falta de amor de tu parte.</p>
+          <p class="section-p" style="margin-bottom:18px;">El Método Sin Perseguir nació de ver ese mismo patrón repetirse una y otra vez: no es que él dejó de querer. Es que la persecución apaga justamente aquello que enciende el interés. La ciencia del comportamiento lo explica desde hace décadas — pero nadie lo había convertido en un plan que puedas seguir, día por día.</p>
+          <p class="section-p">Por eso esto no son frases mágicas ni juegos. Es un protocolo de 21 días, en tres etapas, que empieza por lo más importante: <strong style="color:#fff;">tú</strong>. Primero recuperas tu centro. Lo demás — su atención, su interés, su regreso — llega como consecuencia, no como punto de partida.</p>
+          <blockquote class="quote-block" style="margin-top:24px;">
+            "No necesitas fingir ni jugar con nadie. Solo dejar de perseguir y volver a ocupar tu lugar."
+          </blockquote>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1243,11 +1253,17 @@
 
   <!-- ─── CONFIANZA / GARANTÍA ─── -->
   <section id="confianza">
-    <div class="section-inner" style="text-align:center;">
-      <p class="section-label">Por qué confiar</p>
-      <h2 class="section-h2">Un método nuevo, para las <span class="accent">primeras en aplicarlo.</span></h2>
-      <p class="section-p" style="max-width:600px;margin:0 auto 48px;">Estás entrando en la etapa de lanzamiento. Por eso el precio es simbólico — y por eso tu experiencia ayuda a dar forma a la próxima versión del método.</p>
-      <div class="problems-grid" style="margin-bottom:0;">
+    <div class="section-inner">
+      <div class="split" style="margin-bottom:48px;">
+        <div>
+          <p class="section-label">Por qué confiar</p>
+          <h2 class="section-h2">Un método nuevo, para las <span class="accent">primeras en aplicarlo.</span></h2>
+          <p class="section-p">Estás entrando en la etapa de lanzamiento. Por eso el precio es simbólico — y por eso tu experiencia ayuda a dar forma a la próxima versión del método.</p>
+          <p class="section-p" style="margin-top:16px;">No se trata de fingir ni de jugar. Se trata de volver a ti — a tu calma, a tu valor, a tu lugar. Y desde ahí, todo cambia.</p>
+        </div>
+        <img src="calma.png" alt="Mujer serena y segura de sí misma" class="split-img">
+      </div>
+      <div class="problems-grid" style="margin-bottom:0;text-align:center;">
         <div class="problem-card">
           <div class="problem-icon">
             <svg class="ico" viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-1.14Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-1.14Z"/></svg>
