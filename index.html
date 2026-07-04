@@ -130,7 +130,10 @@
       width: 100%;
       z-index: 50;
       padding: 20px 16px 0;
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+      will-change: transform;
     }
+    header.nav-hidden { transform: translateY(-130%); }
     .nav-inner {
       max-width: var(--max);
       margin: 0 auto;
@@ -1493,7 +1496,9 @@
     // Scroll progress bar
     const progressBar = document.getElementById('progress-bar');
     const stickyBar = document.getElementById('sticky-bar');
+    const header = document.querySelector('header');
     let heroBottom = 0;
+    let lastScrollY = window.scrollY;
 
     function onScroll() {
       const scrollTop = window.scrollY;
@@ -1511,6 +1516,15 @@
       } else {
         stickyBar.classList.remove('visible');
       }
+
+      // Auto-hide navbar: esconde al bajar, muestra al subir (con umbral anti-tremor)
+      const delta = scrollTop - lastScrollY;
+      if (scrollTop > 120 && delta > 6) {
+        header.classList.add('nav-hidden');       // bajando → esconder
+      } else if (delta < -6 || scrollTop <= 120) {
+        header.classList.remove('nav-hidden');     // subiendo o cerca del tope → mostrar
+      }
+      lastScrollY = scrollTop;
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
